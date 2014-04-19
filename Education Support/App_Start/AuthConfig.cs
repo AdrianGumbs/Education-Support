@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Web.WebPages.OAuth;
-using Education_Support.Models;
-
-namespace Education_Support
+﻿
+namespace Website
 {
     public static class AuthConfig
     {
