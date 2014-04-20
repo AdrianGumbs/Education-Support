@@ -8,7 +8,7 @@ namespace Website.Models
 {
     public class AuthorityModel
     {
-        public Guid Id { get; set; }
+        public Guid Authority_Id { get; set; }
         [Required(ErrorMessage = "An Authority Code is required.")]
         [IntLength(3)]
         public int Code { get; set; }
@@ -26,7 +26,7 @@ namespace Website.Models
         public AuthorityModel(){}
         public void PopulateModel(Authority _authority)
         {
-            Id = _authority.Id;
+            Authority_Id = _authority.Id;
             Code = _authority.Code;
             Name = _authority.Name;
             LastUpdated = _authority.LastUpdated;

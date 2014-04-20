@@ -9,7 +9,7 @@ namespace Websitet.Models
 {
     public class ContactModel
     {
-        public virtual Guid Id { get; set; }
+        public virtual Guid Contact_Id { get; set; }
         public virtual string Forename { get; set; }
         public virtual string Surname { get; set; }
         [DisplayName("Tel")]
@@ -25,7 +25,7 @@ namespace Websitet.Models
         public ContactModel(){}
         public void PopulateModel(Contact _contact)
         {
-            Id = _contact.Id;
+            Contact_Id = _contact.Id;
             Forename = _contact.Forename;
             Surname = _contact.Surname;
             Telephone = _contact.Telephone;

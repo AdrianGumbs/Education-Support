@@ -13,7 +13,6 @@ namespace Website.Models.Lists
         {
             this.AuthorityList = Search(_authorityRepo.LoadAll(), search);
         }
-
         public IList<Authority> Search(IList<Authority> results, string search = null)
         {//work out how to make async
             if (!string.IsNullOrWhiteSpace(search))

@@ -123,7 +123,7 @@ namespace Website.Controllers
                 }
                 Authority authority = new Authority();
                 e.PopulateDomain(authority);
-                authority.Id = e.Id;
+                authority.Id = e.Authority_Id;
                 authorityRepo.Save(authority);
                 TempData["alertMessage"] = "Changes to " + e.Name + " have been added.";
                 return RedirectToAction("Index");

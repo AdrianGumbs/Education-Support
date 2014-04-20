@@ -1,13 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Framework.Domain;
+using Framework.Interfaces;
+using Framework.Repos;
+using System;
 using System.Web.Mvc;
+using Websitet.Models;
 
 namespace Education_Support.Controllers
 {
     public class ContactController : Controller
     {
+        Guid check;
+        string errorMessage = "An error has occurried";
+        IContactRepo contactRepo;
+
+        public ContactController()
+        {
+            contactRepo = new ContactRepo();
+        }
+        public ContactController(IContactRepo repo)
+        {
+            this.contactRepo = repo;
+        }
+
         // GET: /Contact/
         public ActionResult Index()
         {
@@ -15,59 +29,89 @@ namespace Education_Support.Controllers
         }
 
         // GET: /Contact/Details/
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
-            return View();
+            if (!Guid.TryParse(id.ToString(), out check))
+            {
+                return HttpNotFound();
+            }
+            ContactModel c = new ContactModel();
+            Contact contact = contactRepo.Load(id);
+            c.PopulateModel(contact);
+            c.Authority = contactRepo.ContactAuthority(contact);
+            return View(c);
         }
 
         // GET: /Contact/Create
-        public ActionResult Create()
+        public ActionResult Add()
         {
             return View();
         }
 
         // POST: /Contact/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Add(ContactModel c)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                if (!ModelState.IsValid)
+                {
+                    return View("Add", c);
+                }
+                Contact contact = new Contact();
+                c.PopulateDomain(contact);
+                contactRepo.Save(contact);
+                return RedirectToAction("Details", "Authority", new { id = contact.Authority.Id });
             }
             catch
             {
+                TempData["alertMessage"] = errorMessage;
                 return View();
             }
         }
 
         // GET: /Contact/Edit/
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
-            return View();
+            if (!Guid.TryParse(id.ToString(), out check))
+            {
+                return HttpNotFound();
+            }
+            Contact contact = contactRepo.Load(id);
+            ContactModel c = new ContactModel();
+            c.PopulateModel(contact);
+            return View(c);
         }
 
         // POST: /Contact/Edit/
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(ContactModel c)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if (!ModelState.IsValid)
+                {
+                    return View("Edit", c);
+                }
+                Contact contact = contactRepo.Load(c.Contact_Id);
+                c.PopulateDomain(contact);
+                contactRepo.Save(contact);
+                return RedirectToAction("Details", new { id = contact.Id });
             }
             catch
             {
+                TempData["alertMessage"] = errorMessage;
                 return View();
             }
         }
 
         // GET: /Contact/Delete/
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
-            return View();
+            Contact contact = contactRepo.Load(id);
+            contactRepo.Remove(contact);
+            TempData["alertMessage"] = "Contact has been deleted.";
+            return RedirectToAction("Details", "Authority", new { id = contact.Authority.Id });
         }
     }
 }
