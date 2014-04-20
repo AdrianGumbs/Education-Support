@@ -10,7 +10,7 @@ namespace Website.Models.Lists
 
         public ContactListModel(IAuthorityRepo authorityRepo, Authority authority)
         {
-            this.ContactList = authorityRepo.LoadContactsByAuthority(authority);
+            this.ContactList = authorityRepo.LoadAuthorityContacts(authority);
         }
     }
 }

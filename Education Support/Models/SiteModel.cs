@@ -6,7 +6,7 @@ namespace Website.Models
 {
     public class SiteModel
     {
-        public virtual Guid Id { get; set; }
+        public virtual Guid Site_Id { get; set; }
         [DisplayName("Address")]
         public virtual string Address_1 { get; set; }
         public virtual string Address_2 { get; set; }
@@ -23,7 +23,7 @@ namespace Website.Models
         public SiteModel(){}
         public void PopulateModel(Site _site)
         {
-            Id = _site.Id;
+            Site_Id = _site.Id;
             Address_1 = _site.Address_1;
             Address_2 = _site.Address_2;
             Town = _site.Town;

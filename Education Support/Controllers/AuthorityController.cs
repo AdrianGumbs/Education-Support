@@ -63,8 +63,8 @@ namespace Website.Controllers
             Authority authority = authorityRepo.Load(id);
             AuthorityModel a = new AuthorityModel();
             a.PopulateModel(authority);
-            a.Contacts = authorityRepo.LoadContactsByAuthority(authority);
-            a.Sites = authorityRepo.LoadSitesByAuthority(authority);
+            a.Contacts = authorityRepo.LoadAuthorityContacts(authority);
+            a.Sites = authorityRepo.LoadAuthoritySites(authority);
             //a.Versions = authorityRepo.LoadSoftwareByAuthority(authority);
             return View(a);
         }

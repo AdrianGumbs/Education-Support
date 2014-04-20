@@ -5,13 +5,14 @@ using System;
 using System.Web.Mvc;
 using Websitet.Models;
 
-namespace Education_Support.Controllers
+namespace Website.Controllers
 {
     public class ContactController : Controller
     {
         Guid check;
         string errorMessage = "An error has occurried";
         IContactRepo contactRepo;
+        IAuthorityRepo authorityRepo = new AuthorityRepo();
 
         public ContactController()
         {
@@ -20,12 +21,6 @@ namespace Education_Support.Controllers
         public ContactController(IContactRepo repo)
         {
             this.contactRepo = repo;
-        }
-
-        // GET: /Contact/
-        public ActionResult Index()
-        {
-            return View();
         }
 
         // GET: /Contact/Details/
@@ -43,9 +38,11 @@ namespace Education_Support.Controllers
         }
 
         // GET: /Contact/Create
-        public ActionResult Add()
+        public ActionResult Add(Guid id)
         {
-            return View();
+            var model = new ContactModel();
+            model.Authority = authorityRepo.Load(id);
+            return View(model);
         }
 
         // POST: /Contact/Create
@@ -60,6 +57,7 @@ namespace Education_Support.Controllers
                 }
                 Contact contact = new Contact();
                 c.PopulateDomain(contact);
+                c.Authority = contactRepo.ContactAuthority(contact);
                 contactRepo.Save(contact);
                 return RedirectToAction("Details", "Authority", new { id = contact.Authority.Id });
             }
@@ -80,6 +78,7 @@ namespace Education_Support.Controllers
             Contact contact = contactRepo.Load(id);
             ContactModel c = new ContactModel();
             c.PopulateModel(contact);
+            c.Authority = contactRepo.ContactAuthority(contact);
             return View(c);
         }
 
@@ -95,6 +94,7 @@ namespace Education_Support.Controllers
                 }
                 Contact contact = contactRepo.Load(c.Contact_Id);
                 c.PopulateDomain(contact);
+                c.Authority = contactRepo.ContactAuthority(contact);
                 contactRepo.Save(contact);
                 return RedirectToAction("Details", new { id = contact.Id });
             }
