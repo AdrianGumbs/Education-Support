@@ -2,9 +2,6 @@
 using Framework.Interfaces;
 using Framework.Repos;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Website.Models;
 
@@ -15,6 +12,7 @@ namespace Website.Controllers
         Guid check;
         string errorMessage = "An error has occurried";
         IWebsiteConfigRepo configRepo;
+        IWebsiteRepo websiteRepo = new WebsiteRepo();
 
         public WebsiteConfigController()
         {
@@ -28,11 +26,12 @@ namespace Website.Controllers
         // GET: /Config/Create
         public ActionResult Add(Guid id)
         {
-            return View();//sort
+            var model = new WebsiteConfigModel();
+            model.Website = websiteRepo.Load(id);
+            return View(model);
         }
 
         // POST: /Config/Create
-
         [HttpPost]
         public ActionResult Add(WebsiteConfigModel a)
         {
@@ -55,7 +54,7 @@ namespace Website.Controllers
             }
         }
 
-        // GET: /Config/Edit/5
+        // GET: /Config/Edit/
         public ActionResult Edit(Guid id)
         {
             if (!Guid.TryParse(id.ToString(), out check))
@@ -68,7 +67,7 @@ namespace Website.Controllers
             return View(c);
         }
 
-        // POST: /Config/Edit/5
+        // POST: /Config/Edit/
         [HttpPost]
         public ActionResult Edit(WebsiteConfigModel e)
         {
@@ -90,7 +89,7 @@ namespace Website.Controllers
             }
         }
 
-        // GET: /Config/Delete/5
+        // GET: /Config/Delete/
         public ActionResult Delete(Guid id)
         {
             WebsiteConfig config = configRepo.Load(id);

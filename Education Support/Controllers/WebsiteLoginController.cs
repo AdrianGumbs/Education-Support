@@ -1,105 +1,101 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Framework.Domain;
+using Framework.Interfaces;
+using Framework.Repos;
+using System;
 using System.Web.Mvc;
+using Website.Models;
 
 namespace Website.Controllers
 {
     public class WebsiteLoginController : Controller
     {
-        //
-        // GET: /Login/
+        Guid check;
+        string errorMessage = "An error has occurried";
+        IWebsiteLoginRepo loginRepo;
+        IWebsiteRepo websiteRepo = new WebsiteRepo();
 
-        public ActionResult Index()
+        public WebsiteLoginController()
         {
-            return View();
+            loginRepo = new WebsiteLoginRepo();
+        }
+        public WebsiteLoginController(IWebsiteLoginRepo repo)
+        {
+            loginRepo = repo;
         }
 
-        //
-        // GET: /Login/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        //
         // GET: /Login/Create
-
-        public ActionResult Create()
+        public ActionResult Add(Guid id)
         {
-            return View();
+            var model = new WebsiteLoginModel();
+            model.Website = websiteRepo.Load(id);
+            return View(model);
         }
 
-        //
         // POST: /Login/Create
-
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Add(WebsiteLoginModel a)
         {
             try
             {
-                // TODO: Add insert logic here
+             if (!ModelState.IsValid)
+                {
+                    return View("Create", a);
+                }
+                WebsiteLogin login = new WebsiteLogin();
+                a.PopulateDomain(login);
+                login.Website = a.Website;
+                loginRepo.Save(login);
+                return RedirectToAction("Details", "Website", new { id = login.Website.Id });
+            }
+            catch
+            {
+                TempData["alertMessage"] = errorMessage;
+                return View(a);
+            }
+        }
 
+        // GET: /Login/Edit/
+        public ActionResult Edit(Guid id)
+        {
+            if (!Guid.TryParse(id.ToString(), out check))
+            {
+                return HttpNotFound();
+            }
+            WebsiteLoginModel c = new WebsiteLoginModel();
+            WebsiteLogin login = loginRepo.Load(id);
+            c.PopulateModel(login);
+            return View(c);
+        }
+
+        // POST: /Login/Edit/
+        [HttpPost]
+        public ActionResult Edit(WebsiteLoginModel e)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View("Edit", e);
+                }
+                WebsiteLogin login = loginRepo.Load(e.Login_Id);
+                e.PopulateDomain(login);
+                loginRepo.Save(login);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                TempData["alertMessage"] = errorMessage;
+                return View(e);
             }
         }
 
-        //
-        // GET: /Login/Edit/5
-
-        public ActionResult Edit(int id)
+        // GET: /Login/Delete/
+        public ActionResult Delete(Guid id)
         {
-            return View();
-        }
-
-        //
-        // POST: /Login/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Login/Delete/5
-
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Login/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            WebsiteLogin login = loginRepo.Load(id);
+            loginRepo.Delete(login);
+            TempData["alertMessage"] = "Account has been deleted.";
+            return RedirectToAction("Index");
         }
     }
 }

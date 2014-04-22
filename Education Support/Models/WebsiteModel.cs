@@ -10,7 +10,6 @@ namespace Website.Models
 {
     public class WebsiteModel
     {
-
         public IEnumerable<SelectListItem> SoftwareListItems { get; set; }
 
         public virtual Guid Website_Id { get; set; }
