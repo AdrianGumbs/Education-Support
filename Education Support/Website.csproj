@@ -11,7 +11,7 @@
     <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Education_Support</RootNamespace>
+    <RootNamespace>Website</RootNamespace>
     <AssemblyName>Education Support</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
@@ -182,9 +182,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AuthorityController.cs" />
+    <Compile Include="Controllers\WebsiteConfigController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\WebsiteLoginController.cs" />
+    <Compile Include="Controllers\ServerController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
+    <Compile Include="Controllers\WebsiteController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -193,11 +197,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\AuthorityModel.cs" />
+    <Compile Include="Models\WebsiteConfigModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\Lists\AuthorityListModel.cs" />
     <Compile Include="Models\Lists\ContactListModel.cs" />
+    <Compile Include="Models\WebsiteLoginModel.cs" />
     <Compile Include="Models\Lists\SiteListModel.cs" />
     <Compile Include="Models\Lists\WebsiteListModel.cs" />
+    <Compile Include="Models\ServerModel.cs" />
+    <Compile Include="Models\WebsiteModel.cs" />
     <Compile Include="Models\SiteModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation\IntLength.cs" />

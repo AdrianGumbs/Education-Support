@@ -3,7 +3,7 @@ using Framework.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Wensite.Models.Lists
+namespace Website.Models.Lists
 {
     public class WebsiteListModel : WebSite
     {

@@ -9,7 +9,7 @@
     <ProjectGuid>{D6FD45C9-39DF-46A5-B02C-BB23AE8A020B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Education_Support.Tests</RootNamespace>
+    <RootNamespace>Website.Tests</RootNamespace>
     <AssemblyName>Education Support.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -64,7 +64,7 @@ namespace Website.Controllers
             catch
             {
                 TempData["alertMessage"] = errorMessage;
-                return View();
+                return View(c);
             }
         }
 
@@ -101,7 +101,7 @@ namespace Website.Controllers
             catch
             {
                 TempData["alertMessage"] = errorMessage;
-                return View();
+                return View(c);
             }
         }
 
@@ -109,7 +109,7 @@ namespace Website.Controllers
         public ActionResult Delete(Guid id)
         {
             Contact contact = contactRepo.Load(id);
-            contactRepo.Remove(contact);
+            contactRepo.Delete(contact);
             TempData["alertMessage"] = "Contact has been deleted.";
             return RedirectToAction("Details", "Authority", new { id = contact.Authority.Id });
         }

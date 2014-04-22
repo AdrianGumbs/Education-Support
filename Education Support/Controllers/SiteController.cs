@@ -64,7 +64,7 @@ namespace Website.Controllers
             catch
             {
                 TempData["alertMessage"] = errorMessage;
-                return View();
+                return View(a);
             }
         }
 
@@ -101,7 +101,7 @@ namespace Website.Controllers
             catch
             {
                 TempData["alertMessage"] = errorMessage;
-                return View();
+                return View(e);
             }
         }
 
@@ -109,7 +109,7 @@ namespace Website.Controllers
         public ActionResult Delete(Guid id)
         {
             Site site = siteRepo.Load(id);
-            siteRepo.Remove(site);
+            siteRepo.Delete(site);
             TempData["alertMessage"] = "Site has been deleted.";
             return RedirectToAction("Index", "Authority");
         }

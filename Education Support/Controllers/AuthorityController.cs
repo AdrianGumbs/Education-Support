@@ -4,7 +4,6 @@ using Framework.Repos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 using Website.Models;
 using Website.Models.Lists;
@@ -21,7 +20,6 @@ namespace Website.Controllers
         {
             authorityRepo = new AuthorityRepo();
         }
-
         public AuthorityController(IAuthorityRepo repo)
         {
             this.authorityRepo = repo;
@@ -36,9 +34,9 @@ namespace Website.Controllers
 
         // POST: /Authority/
         [HttpPost]
-        public ActionResult Index(string search)
+        public ActionResult Index(string term)
         {
-            var model = new AuthorityListModel(authorityRepo, search);
+            var model = new AuthorityListModel(authorityRepo, term);
             return View(model);
         }
 
@@ -94,7 +92,7 @@ namespace Website.Controllers
             catch
             {
                 TempData["alertMessage"] = errorMessage;
-                return View();
+                return View(a);
             }
         }
 
@@ -131,7 +129,7 @@ namespace Website.Controllers
             catch
             {
                 TempData["alertMessage"] = errorMessage;
-                return View();
+                return View(e);
             }
         }
 
@@ -139,7 +137,7 @@ namespace Website.Controllers
         public ActionResult Delete(Guid id)
         {
             Authority authority = authorityRepo.Load(id);
-            authorityRepo.Remove(authority);
+            authorityRepo.Delete(authority);
             TempData["alertMessage"] = "Authority has been deleted.";
             return RedirectToAction("Index");
         }
