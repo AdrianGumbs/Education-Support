@@ -265,9 +265,12 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="favicon.ico" />
+    <Content Include="Images\favicon2.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Images\Logos\Avco1.png" />
+    <Content Include="Images\search.png" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -321,10 +324,20 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Authority\Index.cshtml" />
+    <Content Include="Views\Authority\Add.cshtml" />
+    <Content Include="Views\Authority\Edit.cshtml" />
+    <Content Include="Views\Authority\Details.cshtml" />
+    <Content Include="Views\Contact\Add.cshtml" />
+    <Content Include="Views\Authority\_Contacts.cshtml" />
+    <Content Include="Views\Site\Add.cshtml" />
+    <Content Include="Views\Authority\_Sites.cshtml" />
+    <Content Include="Views\Site\Details.cshtml" />
+    <Content Include="Views\Site\_Authority.cshtml" />
+    <Content Include="Views\Site\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Authority\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

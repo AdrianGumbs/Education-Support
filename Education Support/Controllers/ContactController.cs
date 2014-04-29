@@ -57,9 +57,9 @@ namespace Website.Controllers
                 }
                 Contact contact = new Contact();
                 c.PopulateDomain(contact);
-                c.Authority = contactRepo.ContactAuthority(contact);
+                contact.Authority = authorityRepo.Load(c.Authority.Id);
                 contactRepo.Save(contact);
-                return RedirectToAction("Details", "Authority", new { id = contact.Authority.Id });
+                return RedirectToAction("Details","Authority", new { id = contact.Authority.Id });
             }
             catch
             {

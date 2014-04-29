@@ -1,0 +1,24 @@
+﻿@model Framework.Domain.Authority
+
+<fieldset>
+    <legend>Authority</legend>
+
+    <table>
+        <tr>
+            <td>
+                @Html.Label("Authority")
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Code)
+            </td>
+        </tr>
+    </table>
+</fieldset>

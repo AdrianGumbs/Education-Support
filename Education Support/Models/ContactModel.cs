@@ -1,9 +1,5 @@
 ﻿using Framework.Domain;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Web;
 
 namespace Websitet.Models
 {
@@ -12,9 +8,7 @@ namespace Websitet.Models
         public virtual Guid Contact_Id { get; set; }
         public virtual string Forename { get; set; }
         public virtual string Surname { get; set; }
-        [DisplayName("Tel")]
         public virtual string Telephone { get; set; }
-        [DisplayName("Mob")]
         public virtual string Mobile { get; set; }
         public virtual string Email { get; set; }
         public virtual string Department { get; set; }

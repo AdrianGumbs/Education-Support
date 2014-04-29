@@ -63,7 +63,7 @@ namespace Website.Controllers
             a.PopulateModel(authority);
             a.Contacts = authorityRepo.LoadAuthorityContacts(authority);
             a.Sites = authorityRepo.LoadAuthoritySites(authority);
-            //a.Versions = authorityRepo.LoadSoftwareByAuthority(authority);
+            a.Versions = authorityRepo.LoadSoftwareByAuthority(authority);
             return View(a);
         }
 
@@ -81,7 +81,7 @@ namespace Website.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    return View("Create", a);
+                    return View("Add", a);
                 }
                 Authority authority = new Authority();
                 a.PopulateDomain(authority);

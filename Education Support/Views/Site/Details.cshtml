@@ -1,0 +1,78 @@
+﻿@model Website.Models.SiteModel
+
+@{
+    ViewBag.Title = "Site Details";
+}
+
+<h2>Site Details</h2>
+
+<br />
+
+<fieldset>
+    <legend>SiteModel</legend>
+
+    @Html.Partial("_Authority", Model.Authority)
+
+    @Html.HiddenFor(model => model.Site_Id)
+
+    <br />
+
+    <table>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Address_1)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Address_1)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Address_2)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Address_2)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Town)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Town)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.County)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.County)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Postcode)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Postcode)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Telephone)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Telephone)
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Site_Id }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Site_Id })
+</p>
+
+<br />
+
+<p>@Html.ActionLink("Back", "Details", "Authority", new { id = Model.Authority.Id }, null)</p>

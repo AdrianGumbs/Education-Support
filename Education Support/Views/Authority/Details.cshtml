@@ -1,0 +1,92 @@
+﻿@model Website.Models.AuthorityModel
+
+@{
+    ViewBag.Title = Model.Name + " Details";
+}
+
+<h2>@Model.Name Details</h2>
+
+<fieldset>
+    <legend>AuthorityModel</legend>
+
+        @Html.HiddenFor(model => model.Authority_Id)
+
+    <table>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Code)</td>
+            <td>@Html.DisplayFor(model => model.Code)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Name)</td>
+            <td>@Html.DisplayFor(model => model.Name)</td>
+        </tr>
+    </table>
+
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Authority_Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = Model.Authority_Id })
+    </p>
+
+
+    <div>
+        <h2>Software</h2>
+        @if (Model.Versions.Any())
+        {
+            @Html.Partial("_Software", Model.Versions)
+        }
+        else
+        {
+            <div>
+                <p>No software has been added.</p>
+            </div>
+        }
+        <p>
+            @Html.ActionLink("Add Software","Add","Website", new { id = Model.Authority_Id }, null)
+        </p>
+    </div>
+
+    <div>
+        <h2>Contacts</h2>
+        @if (Model.Contacts.Any())
+        {
+            @Html.Partial("_Contacts", Model.Contacts, ViewData)
+        }
+        else
+        {
+            <div>
+                <p>No contacts have been added.</p>
+            </div>
+        }
+        <p>
+            @Html.ActionLink("Add Contact", "Add", "Contact", new { id = Model.Authority_Id }, null)
+        </p>
+    </div>
+
+    <div>
+        <h2>Sites</h2>
+        @if (Model.Sites.Any())
+        {
+            @Html.Partial("_Sites", Model.Sites, ViewData)
+        }
+        else
+        {
+            <div>
+                <p>No sites have been added.</p>
+            </div>
+        }
+        <p>
+            @Html.ActionLink("Add Site", "Add", "Site", new { id = Model.Authority_Id }, null)
+        </p>
+    </div>
+
+</fieldset>
+
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<p class="last-updated">
+    @Html.DisplayNameFor(model => model.LastUpdated) :
+    @Html.DisplayFor(model => model.LastUpdated)
+</p>

@@ -1,0 +1,88 @@
+﻿@model Website.Models.SiteModel
+
+@{
+    ViewBag.Title = "Add Site";
+}
+
+<h2>Add Site</h2>
+
+<br />
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>SiteModel</legend>
+
+        @Html.HiddenFor(model => model.Site_Id)
+        @Html.HiddenFor(model => model.Authority.Id)
+
+        @Html.Partial("_Authority", Model.Authority)
+
+        <br />
+
+        <table>
+            <tr>
+                <td>@Html.LabelFor(model => model.Address_1)</td>
+                <td>@Html.LabelFor(model => model.Address_2)</td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.EditorFor(model => model.Address_1)
+                    @Html.ValidationMessageFor(model => model.Address_1)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Address_2)
+                    @Html.ValidationMessageFor(model => model.Address_2)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.Town)</td>
+                <td>@Html.LabelFor(model => model.County)</td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.EditorFor(model => model.Town)
+                    @Html.ValidationMessageFor(model => model.Town)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.County)
+                    @Html.ValidationMessageFor(model => model.County)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.Postcode)</td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.EditorFor(model => model.Postcode)
+                    @Html.ValidationMessageFor(model => model.Postcode)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.Telephone)</td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.EditorFor(model => model.Telephone)
+                    @Html.ValidationMessageFor(model => model.Telephone)
+                </td>
+            </tr>
+        </table>
+
+        <br />
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back", "Details", "Authority", new { id = Model.Authority.Id }, null)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

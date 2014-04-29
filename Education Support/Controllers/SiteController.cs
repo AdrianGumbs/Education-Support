@@ -57,9 +57,9 @@ namespace Website.Controllers
                 }
                 Site site = new Site();
                 a.PopulateDomain(site);
-                a.Authority = siteRepo.SiteAuthority(site);
+                site.Authority = authorityRepo.Load(a.Authority.Id);
                 siteRepo.Save(site);
-                return RedirectToAction("Details", "Authority", new { id = a.Authority.Id });
+                return RedirectToAction("Details", "Authority", new { id = site.Authority.Id });
             }
             catch
             {
