@@ -1,0 +1,77 @@
+﻿@model Websitet.Models.ContactModel
+
+@{
+    ViewBag.Title = "Contact Details";
+}
+
+<h2>Contact Details</h2>
+
+<fieldset>
+    <legend>ContactModel</legend>
+
+    @Html.Partial("_Authority", Model.Authority)
+
+    @Html.HiddenFor(model => model.Authority.Id)
+
+    <br />
+
+    <table>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Forename)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Forename)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Surname)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Telephone)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Telephone)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Mobile)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Mobile)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Email)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Department)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Department)
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Contact_Id }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Contact_Id })
+</p>
+
+<br />
+<p>
+    @Html.ActionLink("Back", "Details", "Authority", new { id = Model.Authority.Id }, null)
+</p>

@@ -335,6 +335,9 @@
     <Content Include="Views\Site\Details.cshtml" />
     <Content Include="Views\Site\_Authority.cshtml" />
     <Content Include="Views\Site\Edit.cshtml" />
+    <Content Include="Views\Contact\_Authority.cshtml" />
+    <Content Include="Views\Contact\Details.cshtml" />
+    <Content Include="Views\Contact\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -21,53 +21,59 @@
 
         <br />
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Forename)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Forename)
-            @Html.ValidationMessageFor(model => model.Forename)
-        </div>
+        <table>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Forename)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Forename)
+                    @Html.ValidationMessageFor(model => model.Forename)
+                </td>
+                <td>
+                    @Html.LabelFor(model => model.Surname)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Surname)
+                    @Html.ValidationMessageFor(model => model.Surname)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Telephone)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Telephone)
+                    @Html.ValidationMessageFor(model => model.Telephone)
+                </td>
+                <td>
+                    @Html.LabelFor(model => model.Mobile)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Mobile)
+                    @Html.ValidationMessageFor(model => model.Mobile)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Email)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Email)
+                    @Html.ValidationMessageFor(model => model.Email)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Department)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Department)
+                    @Html.ValidationMessageFor(model => model.Department)
+                </td>
+            </tr>
+        </table>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Surname)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Surname)
-            @Html.ValidationMessageFor(model => model.Surname)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Telephone)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Telephone)
-            @Html.ValidationMessageFor(model => model.Telephone)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Mobile)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Mobile)
-            @Html.ValidationMessageFor(model => model.Mobile)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Email)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Email)
-            @Html.ValidationMessageFor(model => model.Email)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Department)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Department)
-            @Html.ValidationMessageFor(model => model.Department)
-        </div>
         <p>
             <input type="submit" value="Create" />
         </p>
@@ -75,7 +81,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back", "Details", "Authority", new { id = Model.Authority.Id }, null)
 </div>
 
 @section Scripts {
