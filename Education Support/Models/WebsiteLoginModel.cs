@@ -6,14 +6,14 @@ namespace Website.Models
 {
     public class WebsiteLoginModel
     {
-        public virtual Guid Login_Id { get; set; }
-        public virtual string Username { get; set; }
-        public virtual string Password { get; set; }
+        public Guid Login_Id { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
         [DisplayName("Memorable Word")]
-        public virtual string MemWord { get; set; }
-        public virtual DateTime LastUpdated { get; set; }
-        public virtual bool Deleted { get; set; }
-        public virtual WebSite Website { get; set; }
+        public string MemWord { get; set; }
+        public DateTime LastUpdated { get; set; }
+        public bool Deleted { get; set; }
+        public WebSite Website { get; set; }
 
         public WebsiteLoginModel(){}
         public void PopulateModel(WebsiteLogin _login)

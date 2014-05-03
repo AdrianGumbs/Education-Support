@@ -6,26 +6,26 @@ namespace Website.Models
 {
     public class ServerModel
     {
-        public virtual Guid Server_Id { get; set; }
-        public virtual string OS { get; set; }
-        public virtual string Host { get; set; }
-        public virtual string IP { get; set; }
+        public Guid Server_Id { get; set; }
+        public string OS { get; set; }
+        public string Host { get; set; }
+        public string IP { get; set; }
         [DisplayName("Database")]
-        public virtual string DataSource { get; set; }
-        public virtual string Contact { get; set; }
+        public string DataSource { get; set; }
+        public string Contact { get; set; }
         [DisplayName("OS")]
-        public virtual string IIS_OS { get; set; }
+        public string IIS_OS { get; set; }
         [DisplayName("Host")]
-        public virtual string IIS_Host { get; set; }
+        public string IIS_Host { get; set; }
         [DisplayName("IP")]
-        public virtual string IIS_IP { get; set; }
+        public string IIS_IP { get; set; }
         [DisplayName("Contact")]
-        public virtual string IIS_Contact { get; set; }
+        public string IIS_Contact { get; set; }
         [DisplayName("Stand-alone Server")]
-        public virtual bool SingleServer { get; set; }
-        public virtual DateTime LastUpdated { get; set; }
-        public virtual bool Deleted { get; set; }
-        public virtual WebSite Website { get; set; }
+        public bool SingleServer { get; set; }
+        public DateTime LastUpdated { get; set; }
+        public bool Deleted { get; set; }
+        public WebSite Website { get; set; }
 
         public ServerModel(){}
         public void PopulateModel(Server _server)

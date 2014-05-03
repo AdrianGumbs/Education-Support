@@ -64,9 +64,10 @@ namespace Website.Controllers
         }
 
         // GET: /Website/Create
-        public ActionResult Add()
+        public ActionResult Add(Guid id)
         {
             var model = new WebsiteModel();
+            model.Authority = authorityRepo.Load(id);
             model.LoadSoftware(softwareRepo);
             return View(model);
         }
@@ -79,16 +80,12 @@ namespace Website.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    return View("Create", w);
-                }
-                var authority = authorityRepo.LoadByName(w.Authority.Name);
-                if (authority == null)
-                {
-                    return HttpNotFound();
+                    return View("Add", w);
                 }
                 WebSite website = new WebSite();
                 w.PopulateDomain(website);
-                website.Authority = authority;
+                website.Authority = authorityRepo.Load(w.Authority.Id);
+                website.Software = softwareRepo.Load(w.Software.Id);
                 websiteRepo.Save(website);
                 return RedirectToAction("Index");
             }

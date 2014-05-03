@@ -11,23 +11,23 @@ namespace Website.Models
     public class WebsiteModel
     {
         public IEnumerable<SelectListItem> SoftwareListItems { get; set; }
+        //public string SelectedSoftware { get; set; }
 
-        public virtual Guid Website_Id { get; set; }
-        [DisplayName("Address")]
-        public virtual string Url { get; set; }
+        public Guid Website_Id { get; set; }
+        public string Url { get; set; }
         [DisplayName("Hosted By")]
-        public virtual string HostedBy { get; set; }
+        public string HostedBy { get; set; }
         [DisplayName("SSL Type")]
-        public virtual string SSLType { get; set; }
+        public string SSLType { get; set; }
         [DisplayName("SSL Expires")]
-        public virtual Nullable<DateTime> SSLExpires { get; set; }
-        public virtual Authority Authority { get; set; }
-        public virtual Framework.Domain.Version Version { get; set; }
-        public virtual Software Software { get; set; }
-        public virtual Server Server { get; set; }
-        public virtual IList<WebsiteLogin> WebsiteAccount { get; set; }
-        public virtual DateTime LastUpdated { get; set; }
-        public virtual bool Deleted { get; set; }
+        public Nullable<DateTime> SSLExpires { get; set; }
+        public Authority Authority { get; set; }
+        public Framework.Domain.Version Version { get; set; }
+        public Software Software { get; set; }
+        public Server Server { get; set; }
+        public IList<WebsiteLogin> WebsiteAccount { get; set; }
+        public DateTime LastUpdated { get; set; }
+        public bool Deleted { get; set; }
 
         public WebsiteModel(){}
         public void PopulateModel(WebSite _website)

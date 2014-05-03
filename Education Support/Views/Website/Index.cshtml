@@ -1,0 +1,97 @@
+﻿@model Website.Models.Lists.WebsiteListModel
+
+@{
+    ViewBag.Title = "Websites";
+}
+
+<h2>Websites</h2>
+
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <table>
+        <tr>
+            <td>@Html.Label("Search")</td>
+            <td>@Html.TextBox("term")</td>
+            <td>
+                <button type="submit" value="term">
+                    <span class="search-icon">Search</span>
+                </button>
+            </td>
+        </tr>
+    </table>
+}
+<br />
+
+@if (Model.WebsiteList.Any())
+{
+    <table @*class="search-table"*@ style="width:800px;">
+        <tr>
+            <th>
+                @Html.DisplayName("Authority")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HostedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SSLType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SSLExpires)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model.WebsiteList)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Authority.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HostedBy)
+            </td>
+            <td>
+                @if(item.SSLType != null)
+                {
+                    @Html.DisplayFor(modelItem => item.SSLType)
+                }
+                else
+                {
+                    <text>n/a</text>
+                }
+            </td>
+            <td>
+                @if (item.SSLExpires != null)
+                {
+                    @item.SSLExpires.Value.ToShortDateString()
+                }
+                else
+                {
+                    <text>n/a</text>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id=item.Id })
+            </td>
+        </tr>
+    }
+
+    </table>
+}
+else
+{
+    <div class="text-centered">
+        <p>No websites have been added.</p>
+    </div>
+}

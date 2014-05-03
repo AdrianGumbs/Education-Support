@@ -8,17 +8,17 @@ namespace Website.Models
     {
         public Guid Config_Id { get; set; }
         [DisplayName("Storage Path")]
-        public virtual string StoragePath { get; set; }
+        public string StoragePath { get; set; }
         [DisplayName("Logs Path")]
-        public virtual string LogsPath { get; set; }
+        public string LogsPath { get; set; }
         [DisplayName("Keys Path")]
-        public virtual string KeysPath { get; set; }
+        public string KeysPath { get; set; }
         [DisplayName("Mail Path")]
-        public virtual string MailPath { get; set; }
+        public string MailPath { get; set; }
         [DisplayName("Mail Server")]
-        public virtual string MailServer { get; set; }
-        public virtual bool Deleted { get; set; }
-        public virtual DateTime LastUpdated { get; set; }
+        public string MailServer { get; set; }
+        public bool Deleted { get; set; }
+        public DateTime LastUpdated { get; set; }
         public WebSite Website { get; set; }
 
         public WebsiteConfigModel(){}

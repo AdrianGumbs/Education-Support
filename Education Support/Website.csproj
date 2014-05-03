@@ -338,6 +338,9 @@
     <Content Include="Views\Contact\_Authority.cshtml" />
     <Content Include="Views\Contact\Details.cshtml" />
     <Content Include="Views\Contact\Edit.cshtml" />
+    <Content Include="Views\Website\Index.cshtml" />
+    <Content Include="Views\Website\Add.cshtml" />
+    <Content Include="Views\Website\_Authority.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

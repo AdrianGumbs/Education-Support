@@ -6,18 +6,18 @@ namespace Website.Models
 {
     public class SiteModel
     {
-        public virtual Guid Site_Id { get; set; }
+        public Guid Site_Id { get; set; }
         [DisplayName("Address 1")]
-        public virtual string Address_1 { get; set; }
+        public string Address_1 { get; set; }
         [DisplayName("Address 2")]
-        public virtual string Address_2 { get; set; }
-        public virtual string Town { get; set; }
-        public virtual string County { get; set; }
-        public virtual string Postcode { get; set; }
-        public virtual string Telephone { get; set; }
-        public virtual bool Deleted { get; set; }
-        public virtual DateTime LastUpdated { get; set; }
-        public virtual Authority Authority { get; set; }
+        public string Address_2 { get; set; }
+        public string Town { get; set; }
+        public string County { get; set; }
+        public string Postcode { get; set; }
+        public string Telephone { get; set; }
+        public bool Deleted { get; set; }
+        public DateTime LastUpdated { get; set; }
+        public Authority Authority { get; set; }
         //carpark class
 
         public SiteModel(){}

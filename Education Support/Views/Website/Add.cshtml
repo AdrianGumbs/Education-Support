@@ -1,0 +1,78 @@
+﻿@model Website.Models.WebsiteModel
+
+@{
+    ViewBag.Title = "Add Software";
+}
+
+<h2>Add Software</h2>
+
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>WebsiteModel</legend>
+
+            @Html.Partial("_Authority", Model.Authority)
+
+            @Html.HiddenFor(model => model.Website_Id)
+            @Html.HiddenFor(model => model.Authority.Id)
+
+            <br />
+
+            <table>
+                <tr>
+                    <td>@Html.Label("Software")</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DropDownListFor(model => model.Software.Id, Model.SoftwareListItems, "Select")
+                        @Html.ValidationMessageFor(model => model.Software.Id)
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Url)</td>
+                    <td>@Html.LabelFor(model => model.HostedBy)</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.EditorFor(model => model.Url)
+                        @Html.ValidationMessageFor(model => model.Url)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.HostedBy)
+                        @Html.ValidationMessageFor(model => model.HostedBy)
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.SSLType)</td>
+                    <td>@Html.LabelFor(model => model.SSLExpires)</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.EditorFor(model => model.SSLType)
+                        @Html.ValidationMessageFor(model => model.SSLType)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.SSLExpires)
+                        @Html.ValidationMessageFor(model => model.SSLExpires)
+                    </td>
+                </tr>
+            </table>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back", "Details", "Authority", new { id = Model.Authority.Id }, null)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

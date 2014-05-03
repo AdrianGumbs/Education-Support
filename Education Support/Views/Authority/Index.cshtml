@@ -7,22 +7,25 @@
 <h2>Authorities</h2>
 
 @using (Html.BeginForm())
-    {
-        <table>
-            <tr>
-                <td>@Html.Label("Search")</td>
-                <td>@Html.TextBox("term")</td>
-                <td>
-                    <button type="submit" value="term">
-                        <span class="search-icon">Search</span>
-                    </button>
-                </td>
-            </tr>
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+    <table>
+        <tr>
+            <td>@Html.Label("Search")</td>
+            <td>@Html.TextBox("term")</td>
+            <td>
+                <button type="submit" value="term">
+                    <span class="search-icon">Search</span>
+                </button>
+            </td>
+        </tr>
         </table>
-    }
+}
 
 <p>
-    @Html.ActionLink("Create New", "Add")
+    @Html.ActionLink("Add New", "Add")
 </p>
 
 @if(Model.AuthorityList.Any())

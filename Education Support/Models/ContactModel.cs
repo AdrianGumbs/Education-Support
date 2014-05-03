@@ -5,16 +5,16 @@ namespace Websitet.Models
 {
     public class ContactModel
     {
-        public virtual Guid Contact_Id { get; set; }
-        public virtual string Forename { get; set; }
-        public virtual string Surname { get; set; }
-        public virtual string Telephone { get; set; }
-        public virtual string Mobile { get; set; }
-        public virtual string Email { get; set; }
-        public virtual string Department { get; set; }
-        public virtual bool Deleted { get; set; }
-        public virtual DateTime LastUpdated { get; set; }
-        public virtual Authority Authority { get; set; }
+        public Guid Contact_Id { get; set; }
+        public string Forename { get; set; }
+        public string Surname { get; set; }
+        public string Telephone { get; set; }
+        public string Mobile { get; set; }
+        public string Email { get; set; }
+        public string Department { get; set; }
+        public bool Deleted { get; set; }
+        public DateTime LastUpdated { get; set; }
+        public Authority Authority { get; set; }
 
         public ContactModel(){}
         public void PopulateModel(Contact _contact)

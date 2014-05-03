@@ -217,9 +217,8 @@ ul#menu {
         }
 
         ul#menu li a:hover {
-            color: red;
+            color: #000;
             text-decoration: underline;
-            font-weight:bold;
         }
 
 
@@ -559,6 +558,7 @@ table {
     border-spacing: 0;
     margin-top: 0.75em;
     border: 0 none;
+    max-width: 960px;
 }
 
 th {
@@ -611,6 +611,11 @@ td {
 
 tr.pager td {
     padding: 0 0.25em 0 0;
+}
+
+.search-table {
+    margin-right: auto;
+    margin-left: auto;
 }
 
 
